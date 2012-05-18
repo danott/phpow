@@ -1,0 +1,1 @@
+require 'phpow/core'

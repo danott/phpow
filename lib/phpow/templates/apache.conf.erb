@@ -1,0 +1,29 @@
+# Apache configuration
+# Should be written to /etc/apache2/users/username.conf on Mac OS X
+
+# Enable PHP
+LoadModule php5_module libexec/apache2/libphp5.so
+<IfModule php5_module>
+  AddType application/x-httpd-php .php
+  AddType application/x-httpd-php-source .phps
+  <IfModule dir_module>
+    DirectoryIndex index.html index.php
+  </IfModule>
+</IfModule>
+
+# Pow is using port 80. Will forward to apache on <%= apache_port %> using Phpow::RackApp
+Listen <%= apache_port %>
+
+# Virtual hosts, piggy-backing on POW's .dev
+DocumentRoot <%= projects_directory %>
+<Directory "<%= projects_directory %>/">
+  Options Indexes MultiViews FollowSymLinks
+  AllowOverride All
+  Order allow,deny
+  Allow from all
+</Directory>
+
+NameVirtualHost 127.0.0.1
+<VirtualHost 127.0.0.1>
+  VirtualDocumentRoot <%= projects_directory %>/%-2+
+</VirtualHost>
