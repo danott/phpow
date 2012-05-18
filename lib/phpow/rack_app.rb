@@ -3,7 +3,7 @@ module Phpow
   class RackApp
 
     require 'net/http'
-    extend Phpow
+    include Phpow
 
     def initialize
       load_config
