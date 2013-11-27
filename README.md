@@ -32,7 +32,7 @@ Use the `--port PORT` and `--folder FOLDER` options to use a different port or f
 Installation
 ------------
 
-**phpow* is distributed as a Ruby Gem.
+**phpow** is distributed as a Ruby Gem.
 
 ```bash
 gem install phpow
