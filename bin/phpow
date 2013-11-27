@@ -2,8 +2,39 @@
 $:.unshift File.join(File.dirname(__FILE__), '../lib')
 
 require 'phpow'
+require 'optparse'
 
-args = ARGV.dup
-ARGV.clear
+args = {}
 
-Phpow::Client.new.run(args)
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: phpow COMMAND [OPTIONS]"
+  opt.separator  ""
+  opt.separator  "Commands"
+  opt.separator  "     preview: preview apache.conf"
+  opt.separator  "     install: install apache.conf"
+  opt.separator  "     uninstall: delete apache.conf"
+  opt.separator  ""
+  opt.separator  "Options"
+
+  opt.on("-p", "--port PORT", "the port apache will listen on") do |port|
+    args[:port] = port
+  end
+
+  opt.on("-f", "--folder FOLDER", "the folder that will serve as apache's document root") do |document_root|
+    args[:document_root] = document_root
+  end
+
+  opt.on("-h","--help","help") do
+    puts opt_parser
+  end
+end
+
+opt_parser.parse!
+
+command_name = ARGV.shift
+if %w[preview install uninstall].include?(command_name)
+  Phpow::ApacheConfiguration.new(args).send(command_name)
+else
+  puts opt_parser
+end
+
