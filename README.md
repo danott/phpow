@@ -1,51 +1,25 @@
 Phpow
 =====
 
-Develop your legacy PHP applications utilizing POW's TLDs on Mac OS X
+Develop your legacy PHP applications utilizing POW's TLDs on Mac OS X.
 
 Installation
 ------------
 
-Add this line to your application's Gemfile:
-
-    gem 'phpow'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install phpow
+```bash
+gem install phpow
+```
 
 Usage
 -----
 
-`phpow install`
-
-Creates the apache configuration file that will listen on port 8888
-
-`phpow uninstall`
-
-Removes the apache configuration file that will listen on port 8888
-
-`phpow create`
-
-Creates symbolic links to phpow's `config.ru` and `.powconfig` files in the current working directory.
-
-`phpow destroy`
-
-Removes the symbolic links to phpow's `config.ru` and `.powconfig` files in the current working directory.
+`phpow -h` for all commands and options.
 
 ### Configuration
 
-By default phpow will set up apache to listen on port 8888, and serve projects from `/Users/username/Sites`. Either one of these defaults can be overridden by creating a `.phpowconfig` file in your home directory.
+By default phpow will set up apache to listen on port 8888, and serve projects from the folder `~/Sites`.
 
-```
-# ~/.phpowconfig Example
-export PHPOW_APACHE_PORT=8080
-export PHPOW_PROJECTS_DIRECTORY=/Users/username/another/specific/directory
-```
+Use the `--port PORT` and `--folder FOLDER` options to use a different port/location.
 
 Contributing
 ------------

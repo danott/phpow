@@ -1,1 +1,1 @@
-require 'phpow/core'
+require 'phpow/apache_configuration'
