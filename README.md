@@ -25,9 +25,12 @@ gem install phpow
 Usage
 -----
 
-`phpow -h` for all commands and options.
+`phpow help` lists all commands and options.
+`phpow preview` previews the Apache configuration file to be written.
+`phpow install` writes the Apache configuration file.
+`phpow uninstall` deletes the Apache configuration file.
 
-### Configuration
+### Options
 
 By default phpow will set up Apache to listen on port 8888, and serve projects from the folder `~/Sites/`.
 
