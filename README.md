@@ -21,6 +21,11 @@ By default phpow will set up apache to listen on port 8888, and serve projects f
 
 Use the `--port PORT` and `--folder FOLDER` options to use a different port/location.
 
+POW
+---
+
+Set up a POW to portmap to your apache port. If you have the [powder](https://github.com/Rodreegez/powder) gem `powder portmap 8888` will do the trick.
+
 Contributing
 ------------
 
